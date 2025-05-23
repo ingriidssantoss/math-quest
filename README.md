@@ -31,7 +31,6 @@ Projeto educacional gamificado focado no ensino de Análise Combinatória para a
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![Canva](https://img.shields.io/badge/Canva-00C4CC?style=for-the-badge&logo=canva&logoColor=white)
 
 ---
 
@@ -58,9 +57,9 @@ A documentação do projeto está disponível na nossa 📖 Wiki, contendo:
 ---
 
 ## 🔗 Links Úteis  
-- Wiki do projeto: https://github.com/ingriidssantoss/math-quest/wiki  
-- Kanban Projects: https://github.com/ingriidssantoss/math-quest/projects  
-- Protótipos no Figma: 
+- Wiki do projeto: [Wiki](https://github.com/ingriidssantoss/math-quest/wiki)  
+- Kanban Projects: [Projects](https://github.com/ingriidssantoss/math-quest/projects)  
+- Protótipos no Figma: [Figma](https://www.figma.com/proto/Jmdk2riJxM6KUIusK9XyKD/MathQuest?node-id=1-2&t=8PuTTLI1HGxudOdS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
 
 ---
 
