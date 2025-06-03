@@ -21,7 +21,8 @@ interface CertificateFormProps {
   };
 }
 
-export function CertificateForm({ params }: CertificateFormProps) {
+export function CertificateForm(props: Readonly<CertificateFormProps>) {
+  const { params } = props;
   const router = useRouter();
   const certificateRef = useRef<HTMLDivElement>(null);
   const moduleName = modules[params.id as keyof typeof modules] || "Módulo não encontrado";
@@ -46,7 +47,7 @@ export function CertificateForm({ params }: CertificateFormProps) {
     try {
       // Hide the buttons during capture
       const buttons = certificateRef.current.parentElement?.querySelector('.mb-8');
-      if (buttons) buttons.style.display = 'none';
+      if (buttons) (buttons as HTMLElement).style.display = 'none';
 
       const canvas = await html2canvas(certificateRef.current, {
         scale: 2, // Higher quality
@@ -58,7 +59,7 @@ export function CertificateForm({ params }: CertificateFormProps) {
       });
       
       // Restore the buttons
-      if (buttons) buttons.style.display = '';
+      if (buttons) (buttons as HTMLElement).style.display = '';
 
       const image = canvas.toDataURL("image/png", 1.0);
       const link = document.createElement("a");

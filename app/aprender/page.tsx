@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Youtube, BookOpen, Brain, GraduationCap } from "lucide-react";
+import { BookOpen, Brain, GraduationCap } from "lucide-react";
 import Link from "next/link";
 
 const resources = {
@@ -81,11 +81,10 @@ export default function AprenderPage() {
             </h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {resources.videos.map((video, index) => (
-                <Card key={index} className="transform transition-all duration-300 hover:scale-105">
-                  <div className="h-2 bg-gradient-to-r from-red-500 to-orange-400" />
+                <Card key={video.title} className="transform transition-all duration-300 hover:scale-105">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
-                      <Youtube className="h-8 w-8 text-red-500" />
+                      <span className="h-8 w-8 flex items-center justify-center text-red-500 font-bold">Youtube</span>
                       <span className="text-sm font-medium text-gray-500">Vídeo {index + 1}</span>
                     </div>
                     <CardTitle>{video.title}</CardTitle>
@@ -109,7 +108,7 @@ export default function AprenderPage() {
             </h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {resources.materials.map((material, index) => (
-                <Card key={index} className="transform transition-all duration-300 hover:scale-105">
+                <Card key={material.title} className="transform transition-all duration-300 hover:scale-105">
                   <div className="h-2 bg-gradient-to-r from-blue-500 to-cyan-400" />
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
@@ -137,7 +136,7 @@ export default function AprenderPage() {
             </h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {resources.practice.map((item, index) => (
-                <Card key={index} className="transform transition-all duration-300 hover:scale-105">
+                <Card key={item.title} className="transform transition-all duration-300 hover:scale-105">
                   <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-400" />
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">

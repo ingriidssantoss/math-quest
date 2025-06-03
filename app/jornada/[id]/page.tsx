@@ -38,8 +38,8 @@ const chapters = {
   // Outros capítulos serão adicionados conforme necessário
 };
 
-export default function ChapterPage({ params }: { params: { id: string } }) {
-  const chapter = chapters[params.id as keyof typeof chapters];
+export default function ChapterPage({ params }: Readonly<{ params: { id: string } }>) {
+  const chapter = chapters[params.id as unknown as keyof typeof chapters];
 
   if (!chapter) {
     return (

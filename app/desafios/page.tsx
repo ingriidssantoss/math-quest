@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Brain, CheckCircle2, XCircle } from "lucide-react";
+import { Brain } from "lucide-react";
 
 const challenges = [
   {
