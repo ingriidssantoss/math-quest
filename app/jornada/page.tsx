@@ -100,8 +100,7 @@ export default function JornadaPage() {
               <h2 className="text-2xl font-bold mb-8 text-center">
                 <span className={`bg-gradient-to-r ${
                   level === 'base' ? 'from-blue-600 to-cyan-500' :
-                  level === 'intermediario' ? 'from-purple-600 to-pink-500' :
-                  'from-amber-600 to-yellow-500'
+                  level === 'intermediario' ? 'from-purple-600 to-pink-500' : 'from-amber-600 to-yellow-500'
                 } bg-clip-text text-transparent`}>
                   {level.toUpperCase()}
                 </span>
