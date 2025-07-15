@@ -1,19 +1,23 @@
+// app/certificado/[id]/page.tsx
 import { CertificateForm } from "@/components/certificate-form";
-import { notFound } from 'next/navigation';
-import { moduleTitles } from '@/lib/jornada';
+import { notFound } from "next/navigation";
+import { moduleTitles } from "@/lib/jornada";
 
-// Generate valid certificate IDs from moduleTitles
-const VALID_CERTIFICATE_IDS = Object.keys(moduleTitles);
+// Define PageProps to match Next.js dynamic route expectations
+type PageProps = {
+  readonly params: Promise<{ id: string }>; // params is a Promise in Next.js App Router
+};
 
 export async function generateStaticParams() {
-  // geramos rotas para cada módulo
-  return VALID_CERTIFICATE_IDS.map(id => ({ id }));
+  return Object.keys(moduleTitles).map((id) => ({ id }));
 }
 
-export default function CertificadoPage({ params }: { params: { id: string } }) {
-  const moduleId = parseInt(params.id, 10);
+export default async function CertificadoPage({ params }: PageProps) {
+  const { id } = await params; // Await the params Promise to access id
+  const moduleId = parseInt(id, 10);
   const moduleTitle = moduleTitles[moduleId];
-  if (!VALID_CERTIFICATE_IDS.includes(params.id) || !moduleTitle) {
+
+  if (!moduleTitle) {
     notFound();
   }
 
