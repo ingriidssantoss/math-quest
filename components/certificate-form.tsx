@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Award, Download, ArrowLeft, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
-import html2canvas from "html2canvas";
+import * as htmlToImage from 'html-to-image';
 
 interface CertificateFormProps {
   moduleId: number;
@@ -33,38 +33,44 @@ export function CertificateForm({ moduleId, moduleTitle }: CertificateFormProps)
 
   const downloadCertificate = async () => {
     if (!certificateRef.current || isDownloading) return;
-
     setIsDownloading(true);
-    try {
-      // Hide the buttons during capture
-      const buttons = certificateRef.current.parentElement?.querySelector('.mb-8');
-      if (buttons instanceof HTMLElement) buttons.style.display = 'none';
 
-      const canvas = await html2canvas(certificateRef.current, {
-        scale: 2, // Higher quality
-        useCORS: true, // Enable cross-origin image loading
-        backgroundColor: null,
-        logging: false,
-        windowWidth: 1920, // Force desktop size for consistent quality
-        windowHeight: 1080
+    // Esconde botões pra captura
+    const buttons = certificateRef.current.parentElement?.querySelector('.mb-8');
+    if (buttons instanceof HTMLElement) buttons.style.display = 'none';
+
+    try {
+      // Gera PNG com alta resolução
+      const dataUrl = await htmlToImage.toPng(certificateRef.current, {
+        width: certificateRef.current.scrollWidth * 2,
+        height: certificateRef.current.scrollHeight * 2,
+        style: {
+          transform: 'scale(2)',
+          transformOrigin: 'top left',
+        },
+        canvasWidth: certificateRef.current.scrollWidth * 2,
+        canvasHeight: certificateRef.current.scrollHeight * 2,
       });
 
-      // Restore the buttons
+      // Restaura botões
       if (buttons instanceof HTMLElement) buttons.style.display = '';
 
-      const image = canvas.toDataURL("image/png", 1.0);
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = `certificado-${formData.studentName.toLowerCase().replace(/\s+/g, "-")}.png`;
+      // Força download
+      const link = document.createElement('a');
+      link.download = `certificado-${formData.studentName
+        .toLowerCase()
+        .replace(/\s+/g, '-')}.png`;
+      link.href = dataUrl;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch (error) {
-      console.error("Error generating certificate:", error);
+    } catch (err) {
+      console.error('Erro ao gerar certificado:', err);
     } finally {
       setIsDownloading(false);
     }
   };
+
 
   if (showCertificate) {
     return (
@@ -102,14 +108,12 @@ export function CertificateForm({ moduleId, moduleTitle }: CertificateFormProps)
               <p className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent">
                 {formData.studentName}
               </p>
-              <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300">concluiu com êxito o módulo</p>
+              <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300">Concluiu com êxito o módulo</p>
               <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
                 {formData.moduleName}
               </p>
               <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300">
-                do programa MathQuest – A Jornada de Combinatória
-              </p>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
+                O programa MathQuest – A Jornada de Combinatória
                 demonstrando domínio sobre os temas abordados e resolução dos desafios propostos com excelência.
               </p>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">Emitido em: {formData.date}</p>

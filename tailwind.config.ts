@@ -7,6 +7,18 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    // lista de classes dinâmicas que você vai usar
+    'from-indigo-500 to-purple-500',
+    'from-teal-500 to-green-500',
+    'from-pink-500 to-red-500',
+    'from-yellow-500 to-orange-500',
+    'from-blue-500 to-indigo-500',
+    'from-green-400 to-teal-400',
+    'from-purple-400 to-pink-400',
+    'from-rose-500 to-fuchsia-500',
+    'from-cyan-400 to-sky-400',
+  ],
   theme: {
     extend: {
       backgroundImage: {

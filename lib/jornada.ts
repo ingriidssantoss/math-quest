@@ -178,7 +178,7 @@ export const JOURNEY: Level[] = [
                 title: 'Permutações Simples',
                 description: 'Exploração do conceito de permutações simples e suas aplicações.',
                 icon: Star,
-                color: 'from-yellow-500 to-amber-400',
+                color: 'from-indigo-500 to-purple-500',
                 chapters: [
                     {
                         id: '3-21',
@@ -247,7 +247,7 @@ export const JOURNEY: Level[] = [
                 title: 'Arranjos Simples',
                 description: 'Exploração do conceito de arranjos simples e suas aplicações.',
                 icon: Brain,
-                color: 'from-green-500 to-emerald-400',
+                color: 'from-teal-500 to-green-500',
                 chapters: [
                     {
                         id: '4-31',
@@ -322,7 +322,7 @@ export const JOURNEY: Level[] = [
                 title: 'Combinações Simples',
                 description: 'Conceito e aplicações de combinações',
                 icon: Star,
-                color: 'from-orange-500 to-yellow-400',
+                color: 'from-pink-500 to-red-500',
                 chapters: [
                     {
                         id: '5-41',
@@ -403,7 +403,7 @@ export const JOURNEY: Level[] = [
                 title: 'Permutações com Repetição',
                 description: '-',
                 icon: Brain,
-                color: 'from-green-500 to-emerald-400',
+                color: 'from-yellow-500 to-orange-500',
                 chapters: [
                     {
                         id: '6-53',
@@ -472,7 +472,7 @@ export const JOURNEY: Level[] = [
                 title: ' Permutações Circulares',
                 description: 'Conceito e aplicações de permutações circulares',
                 icon: Trophy,
-                color: 'from-yellow-500 to-amber-400',
+                color: 'from-blue-500 to-indigo-500',
                 chapters: [
                     {
                         id: '7-63',
@@ -536,7 +536,7 @@ export const JOURNEY: Level[] = [
                 title: 'Combinações Com Repetição',
                 description: '-',
                 icon: BookOpen,
-                color: 'from-red-500 to-orange-400',
+                color: 'from-rose-500 to-fuchsia-500',
                 chapters: [
                     {
                         id: '8-71',
@@ -605,7 +605,7 @@ export const JOURNEY: Level[] = [
                 title: 'Problemas com Repetição',
                 description: '-',
                 icon: BookOpen,
-                color: 'from-red-500 to-orange-400',
+                color: 'from-cyan-400 to-sky-400',
                 chapters: [
                     {
                         id: '9-81',
