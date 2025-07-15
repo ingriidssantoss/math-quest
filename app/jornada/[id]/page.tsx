@@ -3,8 +3,27 @@ import { allChapterIds, chapterContentsById, moduleTitles } from "@/lib/jornada"
 import ChapterClient from "@/components/ChapterCliente";
 import Link from "next/link";
 
-export default function ChapterPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+// Define Props to match Next.js dynamic route expectations
+type Props = {
+  readonly params: Promise<{ id: string }>; // params is a Promise in Next.js App Router
+};
+
+export async function generateStaticParams() {
+  const chapterParams = allChapterIds.map((id) => ({ id }));
+  const moduleParams = Object.keys(moduleTitles).map((id) => ({ id }));
+  return [...chapterParams, ...moduleParams];
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params; // Await the params Promise to access id
+  const chap = chapterContentsById[id];
+  return {
+    title: chap ? `${chap.title} | MathQuest` : "Capítulo não encontrado | MathQuest",
+  };
+}
+
+export default async function ChapterPage({ params }: Props) {
+  const { id } = await params; // Await the params Promise to access id
   const chap = chapterContentsById[id];
 
   if (!chap) {
@@ -37,17 +56,4 @@ export default function ChapterPage({ params }: { params: { id: string } }) {
       </div>
     </div>
   );
-}
-
-export function generateStaticParams() {
-  const chapterParams = allChapterIds.map(id => ({ id }));
-  const moduleParams = Object.keys(moduleTitles).map(id => ({ id }));
-  return [...chapterParams, ...moduleParams];
-}
-
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const chap = chapterContentsById[params.id];
-  return {
-    title: chap ? `${chap.title} | MathQuest` : "Capítulo não encontrado | MathQuest"
-  };
 }
