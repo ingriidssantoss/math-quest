@@ -9,27 +9,18 @@ import { Award, Download, ArrowLeft, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import html2canvas from "html2canvas";
 
-const modules = {
-  "1": "Fundamentos da Contagem",
-  "2": "Arranjos e Permutações",
-  "3": "Combinações Simples"
-};
-
 interface CertificateFormProps {
-  params: {
-    id: string;
-  };
+  moduleId: number;
+  moduleTitle: string;
 }
 
-export function CertificateForm(props: Readonly<CertificateFormProps>) {
-  const { params } = props;
+export function CertificateForm({ moduleId, moduleTitle }: CertificateFormProps) {
   const router = useRouter();
   const certificateRef = useRef<HTMLDivElement>(null);
-  const moduleName = modules[params.id as keyof typeof modules] || "Módulo não encontrado";
-  
+
   const [formData, setFormData] = useState({
     studentName: "",
-    moduleName,
+    moduleName: moduleTitle,
     date: new Date().toISOString().split("T")[0]
   });
   const [showCertificate, setShowCertificate] = useState(false);
@@ -42,12 +33,12 @@ export function CertificateForm(props: Readonly<CertificateFormProps>) {
 
   const downloadCertificate = async () => {
     if (!certificateRef.current || isDownloading) return;
-    
+
     setIsDownloading(true);
     try {
       // Hide the buttons during capture
       const buttons = certificateRef.current.parentElement?.querySelector('.mb-8');
-      if (buttons) (buttons as HTMLElement).style.display = 'none';
+      if (buttons instanceof HTMLElement) buttons.style.display = 'none';
 
       const canvas = await html2canvas(certificateRef.current, {
         scale: 2, // Higher quality
@@ -57,9 +48,9 @@ export function CertificateForm(props: Readonly<CertificateFormProps>) {
         windowWidth: 1920, // Force desktop size for consistent quality
         windowHeight: 1080
       });
-      
+
       // Restore the buttons
-      if (buttons) (buttons as HTMLElement).style.display = '';
+      if (buttons instanceof HTMLElement) buttons.style.display = '';
 
       const image = canvas.toDataURL("image/png", 1.0);
       const link = document.createElement("a");
@@ -87,9 +78,9 @@ export function CertificateForm(props: Readonly<CertificateFormProps>) {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Voltar para Jornada
           </Button>
-          <Button 
-            onClick={downloadCertificate} 
-            size="lg" 
+          <Button
+            onClick={downloadCertificate}
+            size="lg"
             className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 w-full sm:w-auto"
             disabled={isDownloading}
           >
@@ -97,7 +88,7 @@ export function CertificateForm(props: Readonly<CertificateFormProps>) {
             {isDownloading ? "Gerando..." : "Baixar Certificado"}
           </Button>
         </div>
-        
+
         <div ref={certificateRef} className="bg-[url('https://images.pexels.com/photos/7130498/pexels-photo-7130498.jpeg')] bg-cover bg-center p-4 sm:p-8 rounded-2xl shadow-2xl">
           <div className="bg-white/95 p-6 sm:p-12 border-8 border-double border-purple-200 dark:border-purple-800 rounded-xl backdrop-blur-sm">
             <div className="text-center space-y-6 sm:space-y-8">
@@ -180,9 +171,9 @@ export function CertificateForm(props: Readonly<CertificateFormProps>) {
                 required
               />
             </div>
-            <Button 
-              type="submit" 
-              size="lg" 
+            <Button
+              type="submit"
+              size="lg"
               className="w-full text-lg bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 transform transition-all duration-300 hover:scale-[1.02]"
             >
               <Award className="mr-2 h-5 w-5" />
