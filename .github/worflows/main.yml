@@ -1,4 +1,4 @@
-name: CI do Frontend MathQuest
+name: CI/CD do Frontend MathQuest
 
 on:
   push:
@@ -9,17 +9,24 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build-and-validate:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 🔄 Clonar repositório
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm install
-      
-      - run: npm run build
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 🔍 Auditoria de segurança (npm audit)
+        run: npm audit --audit-level=high || exit 0
+
+      - name: 🛠️ Construir o projeto Next.js
+        run: npm run build
