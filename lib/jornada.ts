@@ -1,4 +1,3 @@
-import { Description } from "@radix-ui/react-toast";
 import { BookOpen, Calculator, FunctionSquare, Brain, Star, Trophy, LucideCrop as LucideProps } from "lucide-react";
 
 // Interfaces
