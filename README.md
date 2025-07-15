@@ -31,8 +31,8 @@ Projeto educacional gamificado focado no ensino de Análise Combinatória para a
 Nome | Função | GitHub  
 ---|---|---  
 Erimilson Silva | Full-Stack | [@Erysilva98](https://github.com/Erysilva98)    
-Victoria Tiburcio | UX Designer | [@Mavi-Tiburcio](https://github.com/mavitiburcio)  
-Ingrid Santos | Infra / DevOps |  [@ingriidssantoss](https://github.com/ingriidssantoss) 
+Victoria Tiburcio | Documentação | [@Mavi-Tiburcio](https://github.com/mavitiburcio)  
+Ingrid Santos | Documentação |  [@ingriidssantoss](https://github.com/ingriidssantoss) 
 Cristina Silva | Documentação | [@crissilvacs](https://github.com/crissilvacs)   
 
 ---
@@ -42,8 +42,6 @@ A documentação do projeto está disponível na nossa 📖 Wiki, contendo:
 
 📌 Visão Geral do Projeto  
 🧠 Relatórios de Sprint  
-🔐 Contexto de Segurança  
-🛠 Estrutura de Infra  
 🧱 Requisitos e Arquitetura  
 🎨 UX / Protótipos  
 
@@ -51,8 +49,7 @@ A documentação do projeto está disponível na nossa 📖 Wiki, contendo:
 
 ## 🔗 Links Úteis  
 - Wiki do projeto: [Wiki](https://github.com/ingriidssantoss/math-quest/wiki)  
-- Kanban Projects: [Projects](https://github.com/ingriidssantoss/math-quest/projects)  
-- Protótipos no Figma: [Figma](https://www.figma.com/proto/Jmdk2riJxM6KUIusK9XyKD/MathQuest?node-id=1-2&t=8PuTTLI1HGxudOdS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
+ - Protótipos no Figma: [Figma](https://www.figma.com/proto/Jmdk2riJxM6KUIusK9XyKD/MathQuest?node-id=1-2&t=8PuTTLI1HGxudOdS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
 
 ---
 
